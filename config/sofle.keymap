@@ -118,7 +118,14 @@
                     ;
             };
 
-          
+            macro_gmode: macro_gmode {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&macro_press &tog GAME>
+                    , <&macro_tap RGB_COLOR_HSB(206,100,40)>
+                    ;
+            };
 
         };
 
