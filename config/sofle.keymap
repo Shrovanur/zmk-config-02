@@ -123,7 +123,16 @@
                 #binding-cells = <0>;
                 bindings
                     = <&macro_press &tog GAME>
-                    , <&macro_tap RGB_COLOR_HSB(206,100,40)>
+                    , <&macro_tap &rgb_ug RGB_COLOR_HSB(206,100,40)>
+                    ;
+            };
+
+            macro_xgmode: macro_xgmode {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&macro_press &to DATUM>
+                    , <&macro_tap &rgb_ug RGB_COLOR_HSB(250,100,40)>
                     ;
             };
 
