@@ -18,121 +18,113 @@
 
 / {
 
-   // Activate SETTINGS layer by pressing raise and lower
-    //conditional_layers {
-      //  compatible = "zmk,conditional-layers";
-        //adjust_layer {
-          //  if-layers = <SYMB_FN NAV>;
-            //then-layer = <SETTINGS>;
-        //};
-    //};
+    // Homerow mods (short tap term), tapdance shift/capslock
+      behaviors {
+              hm: homerow_mods {
+                  compatible = "zmk,behavior-hold-tap";
+                  #binding-cells = <2>;
+                  tapping-term-ms = <300>;
+                  quick-tap-ms = <0>;
+                  flavor = "tap-preferred";
+                  bindings = <&kp>, <&kp>;
+              };
 
-    // Homerow mod, short tap term
-    behaviors {
-            hm: homerow_mods {
-                compatible = "zmk,behavior-hold-tap";
-                #binding-cells = <2>;
-                tapping-term-ms = <300>;
-                quick-tap-ms = <0>;
-                flavor = "tap-preferred";
-                bindings = <&kp>, <&kp>;
-            };
-
-            td_SHFT_CLCK: tap_dance_0 {
-              compatible = "zmk,behavior-tap-dance";
-              #binding-cells = <0>;
-              tapping-term-ms = <200>;
-              bindings = <&kp LSHFT>, <&kp CLCK>;
-            };
-        };
+              td_SHFT_CLCK: tap_dance_0 {
+                compatible = "zmk,behavior-tap-dance";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp LSHFT>, <&kp CLCK>;
+              };
+          };
 
     // Macros
-    macros {
-        macro_copy: macro_copy {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_tap &kp C>
-                , <&macro_release &kp LGUI>
-                ;
-        };
+      macros {
+          macro_copy: macro_copy {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings
+                  = <&macro_press &kp LGUI>
+                  , <&macro_tap &kp C>
+                  , <&macro_release &kp LGUI>
+                  ;
+          };
 
-        macro_paste: macro_paste {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_tap &kp V>
-                , <&macro_release &kp LGUI>
-                ;
-        };
+          macro_paste: macro_paste {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings
+                  = <&macro_press &kp LGUI>
+                  , <&macro_tap &kp V>
+                  , <&macro_release &kp LGUI>
+                  ;
+          };
 
-        macro_undo: macro_undo {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_tap &kp Z>
-                , <&macro_release &kp LGUI>
-                ;
-        };
+          macro_undo: macro_undo {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings
+                  = <&macro_press &kp LGUI>
+                  , <&macro_tap &kp Z>
+                  , <&macro_release &kp LGUI>
+                  ;
+          };
 
-        macro_redo: macro_redo {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_press &kp LSHIFT>
-                , <&macro_tap &kp Z>
-                , <&macro_release &kp LSHIFT>
-                , <&macro_release &kp LGUI>
-                ;
-        };
+          macro_redo: macro_redo {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings
+                  = <&macro_press &kp LGUI>
+                  , <&macro_press &kp LSHIFT>
+                  , <&macro_tap &kp Z>
+                  , <&macro_release &kp LSHIFT>
+                  , <&macro_release &kp LGUI>
+                  ;
+          };
 
-        macro_cut: macro_cut {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_tap &kp X>
-                , <&macro_release &kp LGUI>
-                ;
-        };
+          macro_cut: macro_cut {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings
+                  = <&macro_press &kp LGUI>
+                  , <&macro_tap &kp X>
+                  , <&macro_release &kp LGUI>
+                  ;
+          };
 
-        macro_fquit: macro_fquit {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_press &kp LALT>
-                , <&macro_tap &kp ESC>
-                , <&macro_release &kp LALT>
-                , <&macro_release &kp LGUI>
-                ;
-        };
+          macro_fquit: macro_fquit {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings
+                  = <&macro_press &kp LGUI>
+                  , <&macro_press &kp LALT>
+                  , <&macro_tap &kp ESC>
+                  , <&macro_release &kp LALT>
+                  , <&macro_release &kp LGUI>
+                  ;
+          };
 
-        macro_gmode: macro_gmode {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &tog GAME>
-                , <&macro_tap &rgb_ug RGB_COLOR_HSB(206,100,40)>
-                ;
-        };
+          macro_gmode: macro_gmode {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings
+                  = <&macro_press &tog GAME>
+                  , <&macro_tap &rgb_ug RGB_COLOR_HSB(206,100,40)>
+                  ;
+          };
 
-        macro_xgmode: macro_xgmode {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &to DATUM>
-                , <&macro_tap &rgb_ug RGB_COLOR_HSB(250,100,40)>
-                ;
-        };
+          macro_xgmode: macro_xgmode {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings
+                  = <&macro_press &to DATUM>
+                  , <&macro_tap &rgb_ug RGB_COLOR_HSB(250,100,40)>
+                  ;
+          };
 
-    };
+          };
 
     // Main keymap
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -140,11 +132,11 @@
         datum_layer {
             display-name = "Datum";
             bindings = <
-&kp GRAVE &kp N1 &kp N2         &kp N3     &kp N4     &kp N5                             &kp N6 &kp N7      &kp N8      &kp N9      &kp N0   &kp HOME
-&kp ESC   &kp Q  &kp W          &kp E      &kp R      &kp T                              &kp Y  &kp U       &kp I       &kp O       &kp P    &kp END
-&kp DEL   &kp A  &hm LCTRL S    &hm LALT D &hm LGUI F &kp G                              &kp H  &hm RGUI J  &hm RALT K  &hm RCTRL L &kp SEMI &kp SQT
-&td_SHFT_CLCK &kp Z  &kp X          &kp C      &kp V      &kp B      &kp C_MUTE &macro_fquit &kp N  &kp M       &kp COMMA   &kp DOT     &kp FSLH &kp RSHFT
-                 &macro_copy   &macro_paste &tog SYMB_FN &kp SPACE  &kp TAB    &kp RET  &kp BSPC  &tog NAV  &macro_undo &macro_redo
+&kp GRAVE     &kp N1 &kp N2        &kp N3       &kp N4       &kp N5                             &kp N6    &kp N7      &kp N8      &kp N9      &kp N0   &kp HOME
+&kp ESC       &kp Q  &kp W         &kp E        &kp R        &kp T                              &kp Y     &kp U       &kp I       &kp O       &kp P    &kp END
+&kp DEL       &kp A  &hm LCTRL S   &hm LALT D   &hm LGUI F   &kp G                              &kp H     &hm RGUI J  &hm RALT K  &hm RCTRL L &kp SEMI &kp SQT
+&td_SHFT_CLCK &kp Z  &kp X         &kp C        &kp V        &kp B      &kp C_MUTE &macro_fquit &kp N     &kp M       &kp COMMA   &kp DOT     &kp FSLH &kp RSHFT
+                     &macro_copy   &macro_paste &tog SYMB_FN &kp SPACE  &kp TAB    &kp RET      &kp BSPC  &tog NAV    &macro_undo &macro_redo
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
@@ -153,11 +145,11 @@
         symb_fn_layer {
             display-name = "Symb./Fun.";
             bindings = <
-&trans &kp F1    &kp F2          &kp F3         &kp F4         &kp F5                 &kp F6    &kp F7        &kp F8         &kp F9          &kp F10   &kp F11
-&trans &kp EXCL  &kp LBKT          &kp RBKT       &kp BSLH       &kp PRCNT              &kp CARET &kp AMPS      &kp ASTRK      &kp LPAR        &kp RPAR  &kp F12
-&trans &kp EQUAL &hm LCTRL MINUS &hm LALT PLUS  &hm LGUI LBRC  &kp RBRC               &kp LBKT  &hm RGUI RBKT &hm RALT LPAR  &hm RCTRL RPAR  &kp BSLH  &kp PIPE
-&trans &trans    &trans          &trans         &trans         &trans   &trans &trans &trans    &trans        &kp SEMI       &kp COLON       &kp FSLH  &kp PIPE
-                                &macro_undo &macro_redo    &to DATUM &trans   &trans &trans &trans    &tog SETTINGS   &trans    &trans
+&trans &kp F1          &kp F2          &kp F3         &kp F4         &kp F5                 &kp F6    &kp F7        &kp F8    &kp F9    &kp F10   &kp F11
+&trans &kp UNDERSCORE  &kp LBKT        &kp RBKT       &kp LPAR       &kp RPAR               &kp PG_UP &kp HOME      &kp UP    &kp END   &kp RPAR  &kp F12
+&trans &kp EQUAL       &hm LCTRL MINUS &hm LALT PLUS  &hm LGUI LBRC  &kp RBRC               &kp PG_DN &kp LEFT      &kp DOWN  &kp RIGHT &kp BSLH  &kp PIPE
+&trans &trans          &trans          &kp PIPE       &kp BSLH       &kp FSLH &trans &trans &trans    &trans        &kp SEMI  &kp COLON &kp FSLH  &trans
+                       &macro_undo     &macro_redo    &to DATUM      &trans   &trans &trans &trans    &tog SETTINGS &trans    &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
         };
@@ -166,24 +158,24 @@
         nav_layer {
             display-name = "Nav.";
             bindings = <
-&trans &kp F1    &kp F2          &kp F3         &kp F4         &kp F5                    &trans    &trans    &trans    &trans    &trans  &trans
-&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans        &trans                          &kp PG_UP &trans    &kp UP    &trans    &kp N0  &trans
-&trans     &kp LCTRL    &kp LALT     &kp LSHFT    &kp LGUI      &kp CLCK                        &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT &kp DEL &kp BSPC
-&trans     &macro_undo  &macro_cut   &macro_copy  &macro_paste  &trans  &kp C_PLAY_PAUSE &trans &trans    &trans    &trans    &trans    &trans  &trans
-                        &trans       &trans       &to DATUM       &trans        &trans  &trans  &trans    &tog SETTINGS    &trans   &trans
+&trans     &kp F1       &kp F2       &kp F3       &kp F4        &kp F5                            &trans    &trans          &trans          &trans          &trans  &trans
+&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans        &trans                            &kp PG_UP &mkp LCLK       &mmv MOVE_UP    &mkp RCLK       &trans  &trans
+&trans     &kp LCTRL    &kp LALT     &kp LSHFT    &kp LGUI      &kp CLCK                          &kp PG_DN &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans  &trans
+&trans     &macro_undo  &macro_cut   &macro_copy  &macro_paste  &trans    &kp C_PLAY_PAUSE &trans &trans    &msc SCRL_UP    &msc SCRL_DOWN  &trans          &trans  &trans
+                        &trans       &trans       &to DATUM     &trans    &trans           &trans &trans    &tog SETTINGS   &trans          &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
         };
 
 
-        adjust_layer {
+        settings_layer {
             display-name = "Conf./Num.";
             bindings = <
-&bt BT_CLR        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                            &none &none &none &none &none &none
-&ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &kp PLUS &kp N7 &kp N8 &kp N9 &kp ASTRK &none
-&none             &rgb_ug RGB_BRD &rgb_ug RGB_BRI &rgb_ug RGB_TOG &none           &none                                   &kp MINUS &kp N4 &kp N5 &kp N6 &kp BSLH &none
-&none             &none           &none           &none           &none           &none            &rgb_ug RGB_TOG &none  &kp N0 &kp N1 &kp N2 &kp N3 &kp EQUAL &none
-                                  &none           &none           &to DATUM           &none            &none           &trans &trans &macro_gmode &none &none
+&bt BT_CLR        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                            &none     &none        &none  &none  &none     &none
+&ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &none                                   &kp PLUS  &kp N7       &kp N8 &kp N9 &kp ASTRK &none
+&none             &rgb_ug RGB_BRD &rgb_ug RGB_BRI &rgb_ug RGB_TOG &rgb_ug RGB_EFF &none                                   &kp MINUS &kp N4       &kp N5 &kp N6 &kp BSLH  &none
+&none             &none           &none           &none           &none           &none            &rgb_ug RGB_TOG &none  &kp N0    &kp N1       &kp N2 &kp N3 &kp EQUAL &none
+                                  &none           &none           &to DATUM       &none            &none           &trans &trans    &macro_gmode &none  &none
             >;
         };
 
@@ -191,13 +183,13 @@
         gaming_layer {
             display-name = "Game";
             bindings = <
-&kp ESC   &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                                 &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp HOME
-&kp TAB   &kp Q  &kp W    &kp E    &kp R     &kp T                                  &kp Y  &kp U     &kp I     &kp O    &kp P    &kp END
-&kp DEL   &kp A  &kp S    &kp D    &kp F     &kp G                                  &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
-&kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B      &kp C_MUTE &kp C_PLAY_PAUSE &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-                 &kp LALT &kp LCTRL &kp LGUI &kp SPACE  &macro_xgmode     &kp RET  &kp BSPC  &to DATUM  &macro_copy   &macro_paste
+&kp ESC   &kp N1 &kp N2   &kp N3    &kp N4    &kp N5                                    &kp N6    &kp N7     &kp N8       &kp N9      &kp N0   &kp HOME
+&kp TAB   &kp Q  &kp W    &kp E     &kp R     &kp T                                     &kp Y     &kp U      &kp I        &kp O       &kp P    &kp END
+&kp DEL   &kp A  &kp S    &kp D     &kp F     &kp G                                     &kp H     &kp J      &kp K        &kp L       &kp SEMI &kp SQT
+&kp LSHFT &kp Z  &kp X    &kp C     &kp V     &kp B      &kp C_MUTE    &kp C_PLAY_PAUSE &kp N     &kp M      &kp COMMA    &kp DOT     &kp FSLH &kp RSHFT
+                 &kp LALT &kp LCTRL &kp LGUI  &kp SPACE  &macro_xgmode &kp RET          &kp BSPC  &to DATUM  &macro_copy  &macro_paste
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_AC_SCROLL_DOWN C_AC_SCROLL_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
 
     };
