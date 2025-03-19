@@ -18,137 +18,39 @@
 
 / {
 
-   // Activate ADJUST layer by pressing raise and lower
+   // Activate SETTINGS layer by pressing NAV and SYMB_FN
     conditional_layers {
         compatible = "zmk,conditional-layers";
-        adjust_layer {
+        SETTINGS_layer {
             if-layers = <SYMB_FN NAV>;
             then-layer = <SETTINGS>;
         };
     };
 
-    // Homerow mod, short tap term
-    behaviors {
-            hm: homerow_mods {
-                compatible = "zmk,behavior-hold-tap";
-                #binding-cells = <2>;
-                tapping-term-ms = <300>;
-                quick-tap-ms = <0>;
-                flavor = "tap-preferred";
-                bindings = <&kp>, <&kp>;
-            };
-        };
-
-    // Macros
-    macros {
-        macro_copy: macro_copy {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_tap &kp C>
-                , <&macro_release &kp LGUI>
-                ;
-        };
-
-        macro_paste: macro_paste {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_tap &kp V>
-                , <&macro_release &kp LGUI>
-                ;
-        };
-
-        macro_undo: macro_undo {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_tap &kp Z>
-                , <&macro_release &kp LGUI>
-                ;
-        };
-
-        macro_redo: macro_redo {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_press &kp LSHIFT>
-                , <&macro_tap &kp Z>
-                , <&macro_release &kp LSHIFT>
-                , <&macro_release &kp LGUI>
-                ;
-        };
-
-        macro_cut: macro_cut {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_tap &kp X>
-                , <&macro_release &kp LGUI>
-                ;
-        };
-
-        macro_fquit: macro_fquit {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI>
-                , <&macro_press &kp LALT>
-                , <&macro_tap &kp ESC>
-                , <&macro_release &kp LALT>
-                , <&macro_release &kp LGUI>
-                ;
-        };
-
-        macro_gmode: macro_gmode {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &tog GAME>
-                , <&macro_tap RGB_COLOR_HSB(206,100,40)>
-                ;
-        };
-
-        macro_xgmode: macro_xgmode {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &to DATUM>
-                , <&macro_tap &rgb_ug RGB_COLOR_HSB(250,100,40)>
-                ;
-        };
-
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        datum_layer {
             display-name = "default";
 // ------------------------------------------------------------------------------------------------------------
 // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |       |
 // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   | BKSPC |
 // |  TAB  |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   |  MUTE  |  |       |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-//               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
+//               | GUI | ALT  | CTRL | SYMB_FN|  ENTER |  | SPACE | NAV| CTRL  | ALT   | GUI  |
             bindings = <
 &kp GRAVE &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &none
 &kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                            &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
 &kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                            &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
 &kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B      &kp C_MUTE &none      &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-                 &kp LGUI &kp LALT &kp LCTRL &mo LOWER  &kp RET    &kp SPACE  &mo RAISE  &kp RCTRL &kp RALT  &kp RGUI
+                 &kp LGUI &kp LALT &kp LCTRL &mo SYMB_FN  &kp RET    &kp SPACE  &mo NAV  &kp RCTRL &kp RALT  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        lower_layer {
-            display-name = "lower";
+        symb_fn_layer {
+            display-name = "SYMB_FN";
 // TODO: Some binds are waiting for shifted keycode support.
 // ------------------------------------------------------------------------------------------------------------
 // |       |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8   |  F9  |  F10  |  F11  |
@@ -167,8 +69,8 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        raise_layer {
-            display-name = "raise";
+        nav_layer {
+            display-name = "NAV";
 // ------------------------------------------------------------------------------------------------------------
 // | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
 // |       | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
@@ -186,14 +88,14 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        adjust_layer {
+        settings_layer {
 // ----------------------------------------------------------------------------------------------------------------------------
 // | BTCLR  |  BT1    |  BT2    |   BT3   |   BT4   |   BT5   |                  |      |      |       |      |       |       |
 // | EXTPWR | RGB_HUD | RGB_HUI | RGB_SAD | RGB_SAI | RGB_EFF |                  |      |      |       |      |       |       |
 // |        | RGB_BRD | RGB_BRI |         |         |         |                  |      |      |       |      |       |       |
 // |        |         |         |         |         |         | RGB_TOG | |      |      |      |       |      |       |       |
 //                    |         |         |         |         |         | |      |      |      |       |      |
-            display-name = "adjust";
+            display-name = "SETTINGS";
             bindings = <
 &bt BT_CLR        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                            &none &none &none &none &none &none
 &ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &none &none &none &none &none &none
@@ -203,14 +105,14 @@
             >;
         };
 
-        adjust_layer {
+        gaming_layer {
 // ----------------------------------------------------------------------------------------------------------------------------
 // | BTCLR  |  BT1    |  BT2    |   BT3   |   BT4   |   BT5   |                  |      |      |       |      |       |       |
 // | EXTPWR | RGB_HUD | RGB_HUI | RGB_SAD | RGB_SAI | RGB_EFF |                  |      |      |       |      |       |       |
 // |        | RGB_BRD | RGB_BRI |         |         |         |                  |      |      |       |      |       |       |
 // |        |         |         |         |         |         | RGB_TOG | |      |      |      |       |      |       |       |
 //                    |         |         |         |         |         | |      |      |      |       |      |
-            display-name = "adjust";
+            display-name = "SETTINGS";
             bindings = <
 &bt BT_CLR        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                            &none &none &none &none &none &none
 &ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &none &none &none &none &none &none
