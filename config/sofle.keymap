@@ -96,45 +96,7 @@
                     ;
             };
 
-            macro_cut: macro_cut {
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                bindings
-                    = <&macro_press &kp LGUI>
-                    , <&macro_tap &kp X>
-                    , <&macro_release &kp LGUI>
-                    ;
-            };
-
-            macro_fquit: macro_fquit {
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                bindings
-                    = <&macro_press &kp LGUI>
-                    , <&macro_press &kp LALT>
-                    , <&macro_tap &kp ESC>
-                    , <&macro_release &kp LALT>
-                    , <&macro_release &kp LGUI>
-                    ;
-            };
-
-            macro_gmode: macro_gmode {
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                bindings
-                    = <&macro_press &tog GAME>
-                    , <&macro_tap RGB_COLOR_HSB(206,100,40)>
-                    ;
-            };
-
-            macro_xgmode: macro_xgmode {
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                bindings
-                    = <&macro_press &to DATUM>
-                    , <&macro_tap &rgb_ug RGB_COLOR_HSB(250,100,40)>
-                    ;
-            };
+          
 
         };
 
