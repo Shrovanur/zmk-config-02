@@ -52,7 +52,7 @@
 
 
 
-        // Macros
+        // Macros something is wrong here
         macros {
             macro_copy: macro_copy {
                 compatible = "zmk,behavior-macro";
