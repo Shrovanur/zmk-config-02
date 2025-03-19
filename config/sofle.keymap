@@ -150,7 +150,7 @@
 &trans &kp EXCL  &kp LBKT          &kp RBKT       &kp BSLH       &kp PRCNT              &kp CARET &kp AMPS      &kp ASTRK      &kp LPAR        &kp RPAR  &kp F12
 &trans &kp EQUAL &hm LCTRL MINUS &hm LALT PLUS  &hm LGUI LBRC  &kp RBRC               &kp LBKT  &hm RGUI RBKT &hm RALT LPAR  &hm RCTRL RPAR  &kp BSLH  &kp PIPE
 &trans &trans    &trans          &trans         &trans         &trans   &trans &trans &trans    &trans        &kp SEMI       &kp COLON       &kp FSLH  &kp PIPE
-                                &macro_undo &macro_redo    &to DATUM &trans   &trans &trans &trans    &tog SETTINGS   &trans    &trans
+                                &macro_undo &macro_redo    &to DATUM &trans   &trans &trans &trans    &trans   &trans    &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
         };
@@ -163,21 +163,9 @@
 &trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans        &trans                          &kp PG_UP &trans    &kp UP    &trans    &kp N0  &trans
 &trans     &kp LCTRL    &kp LALT     &kp LSHFT    &kp LGUI      &kp CLCK                        &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT &kp DEL &kp BSPC
 &trans     &macro_undo  &macro_cut   &macro_copy  &macro_paste  &trans  &kp C_PLAY_PAUSE &trans &trans    &trans    &trans    &trans    &trans  &trans
-                        &trans       &trans       &to DATUM       &trans        &trans  &trans  &trans    &tog SETTINGS    &trans   &trans
+                        &trans       &trans       &to DATUM       &trans        &trans  &trans  &trans    &trans    &trans   &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
-        };
-
-
-        adjust_layer {
-            display-name = "Conf./Num.";
-            bindings = <
-&bt BT_CLR        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                            &none &none &none &none &none &none
-&ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &kp PLUS &kp N7 &kp N8 &kp N9 &kp ASTRK &none
-&none             &rgb_ug RGB_BRD &rgb_ug RGB_BRI &rgb_ug RGB_TOG &none           &none                                   &kp MINUS &kp N4 &kp N5 &kp N6 &kp BSLH &none
-&none             &none           &none           &none           &none           &none            &rgb_ug RGB_TOG &none  &kp N0 &kp N1 &kp N2 &kp N3 &kp EQUAL &none
-                                  &none           &none           &to DATUM           &none            &none           &trans &trans &trans &none &none
-            >;
         };
 
     };
