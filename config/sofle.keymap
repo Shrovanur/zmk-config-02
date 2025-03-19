@@ -96,6 +96,28 @@
                     ;
             };
 
+            macro_cut: macro_cut {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&macro_press &kp LGUI>
+                    , <&macro_tap &kp X>
+                    , <&macro_release &kp LGUI>
+                    ;
+            };
+
+            macro_fquit: macro_fquit {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&macro_press &kp LGUI>
+                    , <&macro_press &kp LALT>
+                    , <&macro_tap &kp ESC>
+                    , <&macro_release &kp LALT>
+                    , <&macro_release &kp LGUI>
+                    ;
+            };
+
           
 
         };
