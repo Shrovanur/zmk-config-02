@@ -137,23 +137,11 @@
 &kp ESC   &kp Q  &kp W          &kp E      &kp R      &kp T                              &kp Y  &kp U     &kp I     &kp O    &kp P    &kp END
 &kp DEL   &kp A  &hm LCTRL S    &hm LALT D &hm LGUI F &kp G                              &kp H  &hm RGUI J     &hm RALT K     &hm RCTRL L    &kp SEMI &kp SQT
 &kp LSHFT &kp Z  &kp X          &kp C      &kp V      &kp B      &kp C_MUTE &macro_fquit &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-                 &macro_copy   &macro_paste &tog SYMB_FN &kp SPACE  &kp TAB    &kp RET  &kp BSPC  &none  &macro_undo &macro_redo
+                 &macro_copy   &macro_paste &none &kp SPACE  &kp TAB    &kp RET  &kp BSPC  &none  &macro_undo &macro_redo
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
 
-
-        symb_fn_layer {
-            display-name = "Symb./Fun.";
-            bindings = <
-&trans &kp F1    &kp F2          &kp F3         &kp F4         &kp F5                 &kp F6    &kp F7        &kp F8         &kp F9          &kp F10   &kp F11
-&trans &kp EXCL  &kp LBKT          &kp RBKT       &kp BSLH       &kp PRCNT              &kp CARET &kp AMPS      &kp ASTRK      &kp LPAR        &kp RPAR  &kp F12
-&trans &kp EQUAL &hm LCTRL MINUS &hm LALT PLUS  &hm LGUI LBRC  &kp RBRC               &kp LBKT  &hm RGUI RBKT &hm RALT LPAR  &hm RCTRL RPAR  &kp BSLH  &kp PIPE
-&trans &trans    &trans          &trans         &trans         &trans   &trans &trans &trans    &trans        &kp SEMI       &kp COLON       &kp FSLH  &kp PIPE
-                                &macro_undo &macro_redo    &to DATUM &trans   &trans &trans &trans    &trans   &trans    &trans
-            >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
-        };
 
 
 
